@@ -5,6 +5,8 @@ http://www.classicgame.com/game/7UP+Pinball
 http://www.classicgame.com/game/The+Pinball+Adventure
 http://www.thepinballzone.net/play/mr-men-pinball/
 
+WWW downloadedAsset = new WWW("file:///sdcard/Music/mywavfile.wav") ; Yes three "/" ;)
+
 
 - Dung thanh am thanh va fill moi mo cac che do xoay trung tam
 - Duoi trung tam co che do teleport toi vi tri tren cung, random ty le
