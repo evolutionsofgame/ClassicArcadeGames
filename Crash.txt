@@ -1,0 +1,129 @@
+java.lang.Error: FATAL EXCEPTION [main]
+Unity version     : 5.3.7f1
+Device model      : samsung GT-I8190
+Device fingerprint: samsung/goldenxx/golden:4.1.1/JRO03H/I8190XXALJL:user/release-keys
+Caused by: java.lang.RuntimeException: Unable to start activity ComponentInfo{pinball.flipper.classic/pinball.flipper.classic.PinballActivity}: android.content.res.Resources$NotFoundException: Resource ID #0x0
+	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2081)
+	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2106)
+	at android.app.ActivityThread.access$700(ActivityThread.java:134)
+	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1217)
+	at android.os.Handler.dispatchMessage(Handler.java:99)
+	at android.os.Looper.loop(Looper.java:137)
+	at android.app.ActivityThread.main(ActivityThread.java:4856)
+	at java.lang.reflect.Method.invokeNative(Native Method)
+	at java.lang.reflect.Method.invoke(Method.java:511)
+	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1007)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:774)
+	at dalvik.system.NativeStart.main(Native Method)
+Caused by: android.content.res.Resources$NotFoundException: Resource ID #0x0
+	at android.content.res.Resources.getValue(Resources.java:1026)
+	at android.content.res.Resources.getDrawable(Resources.java:671)
+	at com.google.android.gms.plus.PlusOneDummyView$zzb.getDrawable(Unknown Source)
+	at com.google.android.gms.plus.PlusOneDummyView.<init>(Unknown Source)
+	at com.google.android.gms.plus.internal.zzg.zza(Unknown Source)
+	at com.google.android.gms.plus.PlusOneButton.zzbw(Unknown Source)
+	at com.google.android.gms.plus.PlusOneButton.<init>(Unknown Source)
+	at com.google.android.gms.plus.PlusOneButton.<init>(Unknown Source)
+	at pinball.flipper.classic.PinballActivity.AddPlusOneButton(PinballActivity.java:672)
+	at pinball.flipper.classic.PinballActivity$12.run(PinballActivity.java:397)
+	at android.app.Activity.runOnUiThread(Activity.java:4630)
+	at pinball.flipper.classic.PinballActivity.AddPlusOneButtonUnity(PinballActivity.java:395)
+	at pinball.flipper.classic.PinballActivity.init(PinballActivity.java:106)
+	at pinball.flipper.classic.PinballActivity.onCreate(PinballActivity.java:90)
+	at android.app.Activity.performCreate(Activity.java:5047)
+	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1094)
+	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2045)
+	... 11 more
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	java.lang.Error: FATAL EXCEPTION [UnityMain]
+Unity version : 5.3.7f1
+Device model : LGE LG-P720h
+Device fingerprint: lge/cx2_open_br/cx2:2.3.6/GRK39F/LGP720h-V10b.1C209C0572:user/release-keys
+
+Caused by: java.lang.Error: signal 11 (SIGSEGV), code 1 (SEGV_MAPERR), fault addr 00000000
+Build fingerprint: 'lge/cx2_open_br/cx2:2.3.6/GRK39F/LGP720h-V10b.1C209C0572:user/release-keys'
+Revision: '7'
+pid: 18880, tid: 18889, name: UnityMain >>> pinball.flipper.classic <<<
+r0 00008d40 r1 00000002 r2 649baa90 r3 00000000
+r4 00008ce1 r5 00636890 r6 82e4da3f r7 00000000
+r8 00000001 r9 00651d84 sl 0005950f fp 6def5040
+ip 00000000 sp 649baa90 lr 824a7934 pc 00000000 cpsr 68303237
+
+at Unknown.00000000(Unknown Source)
+at libunity.004a7930(Native Method)
+at libunity.004aa158(Native Method)
+at libunity.00334368(Native Method)
+at libunity.003340b0(Native Method)
+at libunity.004ddd00(Native Method)
+at libunity.004e2fb4(Native Method)
+at libdvm.00011f74(Native Method)
+
+
+
+
+
+
+
+
+
+
+
+
+*** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+Build fingerprint: 'samsung/j1xltejt/j1xlte:5.1.1/LMY47X/J120FXXU1AOL3:user/release-keys'
+Revision: '3'
+ABI: 'arm'
+pid: 17841, tid: 17841, name: flipper.classic >>> pinball.flipper.classic <<<
+signal 11 (SIGSEGV), code 1 (SEGV_MAPERR), fault addr 0x0
+r0 00000001 r1 b6f99e30 r2 00000001 r3 00000016
+r4 0000000b r5 4ada9dfe r6 00000000 r7 001735f8
+r8 0000c129 r9 b4427800 sl 4ada9dfe fp 0000c129
+ip a24302bc sp beb4dd68 lr a1a40d84 pc a1a40d8c cpsr 80070010
+
+backtrace:
+#00 pc 004e3d8c /data/app/pinball.flipper.classic-1/lib/arm/libunity.so
+#01 pc 00566497 /data/dalvik-cache/arm/data@app@pinball.flipper.classic-1@base.apk@classes.dex
+
+
+
+
+
+java.lang.Error: FATAL EXCEPTION [UnityMain]
+Unity version : 5.3.7f1
+Device model : LGE LG-P720h
+Device fingerprint: lge/cx2_open_br/cx2:2.3.6/GRK39F/LGP720h-V10b.1C209C0572:user/release-keys
+
+Caused by: java.lang.Error: signal 11 (SIGSEGV), code 1 (SEGV_MAPERR), fault addr 00000000
+Build fingerprint: 'lge/cx2_open_br/cx2:2.3.6/GRK39F/LGP720h-V10b.1C209C0572:user/release-keys'
+Revision: '7'
+pid: 18880, tid: 18889, name: UnityMain >>> pinball.flipper.classic <<<
+r0 00008d40 r1 00000002 r2 649baa90 r3 00000000
+r4 00008ce1 r5 00636890 r6 82e4da3f r7 00000000
+r8 00000001 r9 00651d84 sl 0005950f fp 6def5040
+ip 00000000 sp 649baa90 lr 824a7934 pc 00000000 cpsr 68303237
+
+at Unknown.00000000(Unknown Source)
+at libunity.004a7930(Native Method)
+at libunity.004aa158(Native Method)
+at libunity.00334368(Native Method)
+at libunity.003340b0(Native Method)
+at libunity.004ddd00(Native Method)
+at libunity.004e2fb4(Native Method)
+at libdvm.00011f74(Native Method)
