@@ -19,3 +19,32 @@ http://gamestudio.vn/tin-tuc/22-goc-lap-trinh/huong-dan-chi-tiet-cach-dang-ky-ta
 
 rateAdmob:100
 timeDelayAds:15000
+
+
+
+http://stackoverflow.com/questions/16713845/permanently-hide-navigation-bar-on-activity
+
+http://stackoverflow.com/questions/21724420/how-to-hide-navigation-bar-permanently-in-android-activity
+
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		if (isOnline())
+		{
+		 GoogleAnalytic();
+		}
+		FullScreencall();
+	}
+	
+	 public void FullScreencall() {
+		    if(Build.VERSION.SDK_INT < 19){ 
+		        View v = this.getWindow().getDecorView();
+		        v.setSystemUiVisibility(View.GONE);
+		    } else {
+		            //for higher api versions.    
+		        View decorView = getWindow().getDecorView(); 
+		        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+		        decorView.setSystemUiVisibility(uiOptions);
+		    }
+		}
