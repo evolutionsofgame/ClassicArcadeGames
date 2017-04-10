@@ -1,0 +1,302 @@
+using UnityEngine;
+using System.Collections;
+using UnityEngine.UI;
+using System.Collections.Generic;
+
+public class Game : MonoBehaviour {
+	public static Game Instance;
+	public static int gridWidth = 44;
+	public static int gridHeight = 23;
+	public static Transform[,] grid = new Transform[gridWidth, gridHeight];
+	public GameObject block;
+	public bool canFill;
+	public List<Vector2> pos = new List<Vector2>();
+	public List<Vector2> storagePosOut = new List<Vector2>();
+	public List<Vector2> storagePosInt = new List<Vector2>();
+	public List<Vector2> storagePos = new List<Vector2>();
+
+	void Awake ()
+	{
+
+		Instance = this;
+		Application.targetFrameRate = 60;
+		Camera.main.aspect = 1280f / 720f;
+	}
+	
+	// Use this for initialization
+	void Start () {
+
+		/*if (block) {
+			for (int x = 0; x < gridWidth; x++) {
+				for (int y = 0; y < gridHeight; y++) {
+						GameObject temp = Instantiate (block, new Vector2 (x, y), Quaternion.identity) as GameObject;
+					temp.GetComponent<NumberBlockID> ().UpdateNumber (x+"-"+y);
+				}
+			}
+		}*/
+		if (block) {
+			for (int x = 0; x < gridWidth; x++) {
+				
+				for (int y = 0; y < gridHeight; y++) {
+					if (x == 0 || y == 0 || x == gridWidth - 1 || y == gridHeight - 1) {
+						GameObject temp = Instantiate (block, new Vector2 (x, y), Quaternion.identity) as GameObject;
+						grid [x, y] = temp.transform;
+					}
+				}
+			}
+		}
+	}
+
+
+
+	void Update()
+	{
+		if (canFill) {
+			canFill = false;
+			fillArea ();
+		}
+
+	}
+
+	void getPosIn()
+	{
+		storagePos.Add (new Vector2(1, 1));
+		while (storagePos.Count > 0) {
+			for (int x = 1; x < gridWidth-1; x++) {
+				bool t = false;
+				for (int y = 1; y < gridHeight-1; y++) {
+					Vector2 check = new Vector2 (x, y);
+					if (storagePos[0] == check && grid[x,y] ==null && !storagePosOut.Contains(check)) {
+						storagePosOut.Add (check);
+						storagePos.Remove (storagePos[0]);
+						if (grid[x+1, y]==null && !storagePos.Contains(new Vector2 (x+1, y)))
+							storagePos.Add (new Vector2 (x+1, y));
+						if (grid[x, y+1]==null && !storagePos.Contains(new Vector2 (x, y+1)))
+							storagePos.Add (new Vector2 (x, y+1));
+						t = true;
+						break;
+					}
+				}
+				if (t)
+					break;
+			}
+		}
+
+		if (block) {
+			for (int x = 0; x < gridWidth; x++) {
+
+				for (int y = 0; y < gridHeight; y++) {
+					Vector2 check = new Vector2 (x, y);
+					if (storagePosOut.Contains(check)) {
+						GameObject temp = Instantiate (block, check, Quaternion.identity) as GameObject;
+						grid [x, y] = temp.transform;
+					}
+				}
+			}
+		}
+
+	}
+
+	public void fillArea()
+	{
+		if (pos.Count <= 0)
+			return;
+		
+		getPosIn ();
+
+		/*Vector3 retangle = pos [pos.Count - 1] - pos [0];
+		if (retangle.y >0) {
+			fillRight ();
+		} else {
+			fillLeft ();
+		}
+
+		if (retangle.x > 0) {
+			fillUp ();
+		} else {
+			fillDown ();
+		}
+		pos.Clear();*/
+		/*if (Mathf.Abs (pos [0].x - pos [pos.Count - 1].x) <= Mathf.Abs (pos [0].y - pos [pos.Count - 1].y)) {
+			if (fillLeftCount() <= fillRightCount())
+				fillLeft ();
+			else
+				fillRight ();
+		}
+		else {
+			if (fillUpCount () <= fillDownCount ())
+				fillUp ();
+			else
+				fillDown ();
+		}	*/
+	}
+
+	int fillUpCount()
+	{
+		int count = 0;
+		if (pos.Count > 0) {
+			for (int i = 0; i < pos.Count; i++) {
+				for (int y = 0; y <= pos[i].y; y++) {
+					if (grid [(int) pos [i].x, y] == null) {
+						count++;
+					}
+
+				}
+			}
+		}
+		return count;
+	}
+
+	int fillDownCount()
+	{
+		int count = 0;
+		if (pos.Count > 0) {
+			for (int i = 0; i < pos.Count; i++) {
+				for (int y = gridHeight-1; y >= pos[i].y; y--) {
+					if (grid [(int) pos [i].x, y] == null) {
+						count++;
+					}
+
+				}
+			}
+		}
+		return count;
+	}
+
+	int fillRightCount()
+	{
+		int count = 0;
+		if (pos.Count > 0) {
+			for (int i = 0; i < pos.Count; i++) {
+				for (int x = gridWidth-1; x >= pos[i].x; x--) {
+					if (grid [x, (int) pos [i].y] == null) {
+						count++;
+					}
+
+				}
+			}
+		}
+		return count;
+	}
+
+	int fillLeftCount()
+	{
+		int count = 0;
+		if (pos.Count > 0) {
+			for (int i = 0; i < pos.Count; i++) {
+				for (int x = 0; x <= pos[i].x; x++) {
+					if (grid [x, (int) pos [i].y] == null) {
+						count++;
+					}
+
+				}
+			}
+		}
+		return count;
+	}
+
+	void fillUp()
+	{
+		if (pos.Count > 0) {
+			for (int i = 0; i < pos.Count; i++) {
+				for (int y = 0; y <= pos[i].y; y++) {
+					if (grid [(int) pos [i].x, y] == null) {
+						GameObject temp = Instantiate (block, new Vector2 (pos [i].x, y), Quaternion.identity) as GameObject;
+						grid [(int) pos [i].x, y] = temp.transform;
+					}
+
+				}
+				if (i == (pos.Count - 1)) {
+					//pos.Clear();
+				}
+			}
+		}
+	}
+
+	void fillDown()
+	{
+		if (pos.Count > 0) {
+			for (int i = 0; i < pos.Count; i++) {
+				for (int y = gridHeight-1; y >= pos[i].y; y--) {
+					if (grid [(int) pos [i].x, y] == null) {
+						GameObject temp = Instantiate (block, new Vector2 (pos [i].x, y), Quaternion.identity) as GameObject;
+						grid [(int) pos [i].x, y] = temp.transform;
+					}
+
+				}
+				if (i == (pos.Count - 1)) {
+					//pos.Clear();
+				}
+			}
+		}
+	}
+
+	void fillLeft()
+	{
+		if (pos.Count > 0) {
+			for (int i = 0; i < pos.Count; i++) {
+				for (int x = 0; x <= pos[i].x; x++) {
+					if (grid [x, (int) pos [i].y] == null) {
+						GameObject temp = Instantiate (block, new Vector2 (x, pos [i].y), Quaternion.identity) as GameObject;
+						grid [x, (int) pos [i].y] = temp.transform;
+					}
+
+				}
+				if (i == (pos.Count - 1)) {
+					//pos.Clear();
+				}
+			}
+		}
+	}
+
+	void fillRight()
+	{
+		if (pos.Count > 0) {
+			for (int i = 0; i < pos.Count; i++) {
+				for (int x = gridWidth-1; x >= pos[i].x; x--) {
+					if (grid [x, (int) pos [i].y] == null) {
+						GameObject temp = Instantiate (block, new Vector2 (x, (int) pos [i].y), Quaternion.identity) as GameObject;
+						grid [x, (int) pos [i].y] = temp.transform;
+					}
+
+				}
+				if (i == (pos.Count - 1)) {
+					//pos.Clear();
+				}
+			}
+		}
+	}
+
+	public Vector2 Round (Vector2 pos)
+	{
+		return new Vector2(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y));
+	}
+
+	public bool CheckIsInsideGrid(Vector2 pos)
+	{
+		return ((int)pos.x >= 0 && (int)pos.x < gridWidth && (int)pos.y >= 0 && (int)pos.y < gridHeight);
+	}
+
+	bool CheckIsValidPosition(GameObject tetromino)
+	{
+		foreach(Transform mino in tetromino.transform)
+		{
+			Vector2 pos = Round (mino.position);
+			if (!CheckIsInsideGrid(pos))
+				return false;
+			if (GetTransformAtGridPosition(pos) !=null)
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public Transform GetTransformAtGridPosition(Vector2 pos)
+	{
+		if ((pos.y > gridHeight-1 || pos.y<0) || pos.x > gridWidth-1 || pos.x<0)
+			return null;
+		else
+			return grid[(int) pos.x, (int) pos.y];
+	}
+}
