@@ -1,22 +1,19 @@
+#--------------------------------------------------------------------------
+# App-ads.txt Configuration File
+# Project: Mobile App Monetization (AdMob + Unity Ads)
+# Generated: 2026-06-26
+#--------------------------------------------------------------------------
+
+# Google AdMob
 google.com, pub-9008563362227459, DIRECT, f08c47fec0942fa0
-unity.com, 1081129, DIRECT, 96cabb5fbdde37a7
-loopme.com, 9621, RESELLER, 6c8d5f95897a5a3b
-adcolony.com, 0a0f72cd66122f31, RESELLER, 1ad675c9de6b5176
-pokkt.com, 6246, RESELLER, c45702d9311e25fd
-pubmatic.com, 156520, RESELLER, 5d62403b186f2ace
-pubmatic.com, 157384, RESELLER, 5d62403b186f2ace
-spotxchange.com, 117872, RESELLER, 7842df1d2fe2db34
-spotx.tv, 117872, RESELLER, 7842df1d2fe2db34
-openx.com, 540871654, RESELLER, 6a698e2ec38604c6
-rubiconproject.com, 20014, RESELLER, 0bfd66d529a55807
-rubiconproject.com, 20744, RESELLER, 0bfd66d529a55807
-rubiconproject.com, 21526, RESELLER, 0bfd66d529a55807
-rubiconproject.com, 20050, RESELLER, 0bfd66d529a55807
-reforge.in, 107, RESELLER
-velismedia.com, 725, RESELLER
-appnexus.com, 7353, RESELLER
-xandr.com, 7353, RESELLER
-algorix.co, 54616, RESELLER
-google.com, pub-5628942860037877, RESELLER
-telaria.com, rwd19-1081129, RESELLER, 1a4e959a1b50034a
-tremorhub.com, rwd19-1081129, RESELLER, 1a4e959a1b50034a
+
+# Unity Ads
+unity3d.com, 000000000, DIRECT, 2475653d99cb138f
+
+#--------------------------------------------------------------------------
+# HƯỚNG DẪN THAY THẾ THÔNG TIN:
+# 1. Thay thế 'pub-0000000000000000' bằng ID người xuất bản AdMob của bạn (Publisher ID).
+#    - Định dạng: pub- kèm theo 16 chữ số.
+# 2. Thay thế '000000000' bằng Unity Organization ID hoặc Game ID được yêu cầu trong bảng điều khiển Unity Monetization.
+# 3. Giữ nguyên các mã TAG định danh đại lý (f08c47fec0942fa0 và 2475653d99cb138f) vì đây là mã chuẩn của Google và Unity.
+#--------------------------------------------------------------------------
